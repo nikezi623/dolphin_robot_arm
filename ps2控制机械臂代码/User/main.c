@@ -4,6 +4,12 @@
 #include "MyPS2.h"
 #include "OLED.h"
 #include "Servo.h"
+#include "FreeRTOS.h"
+#include "task.h"
+
+#define vStartTask_STACK_SIZE 256
+#define vStartTask_PRIORITY 1
+void vStartTask(void *pvParameters);
 
 int main(void)
 {	
@@ -11,43 +17,23 @@ int main(void)
 	OLED_Init();
 	Servo_Init();
 	
-	Wait_Connect();
-
-	OLED_ShowString(2, 1, "Lx:000"); OLED_ShowString(2, 8, "Ly:000"); OLED_ShowString(3, 1, "Rx:000"); OLED_ShowString(3, 8, "Ry:000");
+	Set_A_Angle(A_ANGLE_INIT_VALUE);
+	Set_B_Angle(B_ANGLE_INIT_VALUE);
+	Set_C_Angle(C_ANGLE_INIT_VALUE);
+	Set_D_Angle(D_ANGLE_INIT_VALUE);
+	
+	Delay_ms(1000);
+	
+	OLED_ShowString(2, 1, "Lx:000"); OLED_ShowString(2, 8, "Ly:000"); 
+	OLED_ShowString(3, 1, "Rx:000"); OLED_ShowString(3, 8, "Ry:000");
+	
+	xTaskCreate(vStartTask, "vStartTask", vStartTask_STACK_SIZE, NULL, vStartTask_PRIORITY, NULL);
+	
+	vTaskStartScheduler();
 	
 	while(1)
 	{
-		Get_Message();
-		Show_Mode();
 		
-		InitArm_ByStart();
-		
-		Get_JoyStick(&Lx, &Ly, &Rx, &Ry);
-		Show_JoyStick(Lx, Ly, Rx, Ry);
-		
-		Show_Key();
-		
-		if (Get_Mode() == RED_MODE)
-		{
-			A_Angle_Plus();
-			A_Angle_Minus();
-			
-			B_Angle_Plus();
-			B_Angle_Minus();
-			
-			C_Angle_Plus();
-			C_Angle_Minus();
-		}
-		
-		if (Get_Mode() == GREEN_MODE)
-		{
-			D_Angle_Plus();
-			D_Angle_Minus();
-
-		}
-		
-		Init_MOSI_MISO();
-		Wait_Connect();
 	}
 }
 

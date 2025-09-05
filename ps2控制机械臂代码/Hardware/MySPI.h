@@ -5,7 +5,6 @@ void MySPI_Init(void);
 void MySPI_Start(void);
 void MySPI_Stop(void);
 uint8_t Swap_Bits(uint8_t SendBits);
-void InitArm_ByStart(void);
 
 #define EXDATA 		0xFF
 #define GREEN_MODE 	0x41

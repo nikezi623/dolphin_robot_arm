@@ -23,14 +23,6 @@ void Set_A_Angle(float A_Angle);
 void Set_B_Angle(float A_Angle);
 void Set_C_Angle(float C_Angle);
 void Set_D_Angle(float D_Angle);
-void A_Angle_Plus(void);
-void A_Angle_Minus(void);
-void B_Angle_Plus(void);
-void B_Angle_Minus(void);
-void C_Angle_Plus(void);
-void C_Angle_Minus(void);
-void D_Angle_Plus(void);
-void D_Angle_Minus(void);
 
 extern uint8_t Lx, Ly, Rx, Ry;
 extern float A_Angle;

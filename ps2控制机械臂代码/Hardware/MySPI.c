@@ -1,5 +1,8 @@
 #include "stm32f10x.h"                  // Device header
+#include "DWT_Delay.h"
 #include "Delay.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 void MySPI_W_SS(uint16_t BitVal)
 {
@@ -59,7 +62,7 @@ uint8_t Swap_Bits(uint8_t SendBits)
 	{
 		MySPI_W_MOSI(SendBits & (0x01 << i));
 		
-		Delay_ms(1);
+		vTaskDelay(pdMS_TO_TICKS(1));	
 		
 		MySPI_W_SCLK(0);
 		if (MySPI_R_MISO() == 1)
@@ -67,11 +70,11 @@ uint8_t Swap_Bits(uint8_t SendBits)
 			RecieveData |= 0x01 << i;
 		}
 		
-		Delay_ms(1);
+		vTaskDelay(pdMS_TO_TICKS(1));	
 		
 		MySPI_W_SCLK(1);
 		
-		Delay_ms(1);
+		vTaskDelay(pdMS_TO_TICKS(1));	
 	}
 	
 	return RecieveData;
