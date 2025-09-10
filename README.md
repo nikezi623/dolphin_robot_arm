@@ -20,5 +20,4 @@
 ---
 
 ## 接线图&原理图<br>
-![接线图](接线图&原理图/接线图-generate_by_fritzing.png)<br>
-![接线图](接线图&原理图/原理图-generate_by_fritzing.jpg)
+![接线图](接线图&原理图/原理图.png)
