@@ -7,7 +7,7 @@
 ## 📷 项目预览
 
 ![3D渲染图](3D渲染图&实物图/海豚机械臂3D渲染图.jpg)<br>
-![3D渲染图](3D渲染图&实物图/海豚机械臂实物图.jpg)<br>
+![3D渲染图](3D渲染图&实物图/桌面机械臂展示实物图.jpg)<br>
 
 [🎥 点击观看演示视频](https://www.bilibili.com/video/BV1tHa8zaEXb/?spm_id_from=333.1387.homepage.video_card.click&vd_source=a3d79e63ae261ce278c12c5cd8c60479)
 
